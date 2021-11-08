@@ -9,7 +9,7 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-    - host: stagging.rafli24.my.id
+    - host: rafli24.my.id
       http:
         paths:
           - path: /sosmed(.*)
