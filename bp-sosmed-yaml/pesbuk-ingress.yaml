@@ -1,0 +1,21 @@
+# https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pesbuk-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: stagging.rafli24.my.id
+      http:
+        paths:
+          - path: /sosmed(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: pesbuk-service
+                port:
+                  number: 8080
