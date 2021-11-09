@@ -26,19 +26,22 @@ pipeline {
             steps {
                 sh '''
                 cd $WORKSPACE/sosmed-bp/bp-sosmed && 
-                docker build --no-cache --network=host -t muhammadrafli24/sosmed:${BUILD_NUMBER} -f dockerfile .
+                sudo docker build --no-cache --network=host -t muhammadrafli24/sosmed:${BUILD_NUMBER} -f dockerfile .
                 '''
             }
         }
         
         stage('Docker Push'){
             steps{
+                withCredentials([string(credentialsId: 'user-docker', variable: 'username'), string(credentialsId: 'docker-passwd', variable: 'password')]) {
+                // some block
+                sh "sudo docker login -u ${username} -p ${password}"
+                    }
                 sh '''
-                   sudo docker login -u ${docker_username} -p ${docker_password} 
-                   sudo docker push muhammadrafli24/sosmed:${BUILD_NUMBER}
+                sudo docker push muhammadrafli24/sosmed:${BUILD_NUMBER}
                 '''
+                }
             }
-        }
         
         stage('Deploy to K8S'){
             steps{
