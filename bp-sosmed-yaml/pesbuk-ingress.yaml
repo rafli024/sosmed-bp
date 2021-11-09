@@ -5,14 +5,14 @@ kind: Ingress
 metadata:
   name: pesbuk-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-    - host: rafli24.my.id
+    - host: sosmed.rafli24.my.id
       http:
         paths:
-          - path: /sosmed
+          - path: /
             pathType: Prefix
             backend:
               service:
