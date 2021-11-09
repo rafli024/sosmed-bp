@@ -20,7 +20,7 @@ spec:
           name: configmap-pesbuk #nama deployment configmap
       containers:
       - name: pesbuk-php
-        image: muhammadrafli24/sosmed:${BUILD_NUMBER}
+        image: muhammadrafli24/sosmed:latest
         ports:
           - containerPort: 8081
         volumeMounts:
