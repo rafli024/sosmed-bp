@@ -18,33 +18,15 @@ spec:
       - name: config-pesbuk #buat configmap deployment
         configMap:
           name: configmap-pesbuk #nama deployment configmap
-
       containers:
       - name: pesbuk-php
-        image: sekolahdevopscilsy/php-sosmed
+        image: muhammadrafli24/sosmed:latest
         ports:
           - containerPort: 80
-        env:
-          - name: DB_HOST
-            value: "pesbuk"
-          - name: DB_USER
-            value: "devopscilsy"
-          - name: DB_PASS
-            value: "1234567890"
-          - name: MYSQL_ROOT_PASSWORD
-            value: "1234567890"
         volumeMounts:
           - name: config-pesbuk
             mountPath: "/var/www/html/config.php"
             subPath: "config.php"
-      
-      - name: pesbuk-mysql
-        image: sekolahdevopscilsy/mysql-sosmed
-        ports:
-          - containerPort: 3306
-        env:
-          - name: MYSQL_ROOT_PASSWORD
-            value: "1234567890"
 ---
 apiVersion: v1
 kind: Service
@@ -53,7 +35,7 @@ metadata:
 spec:
   selector:
     app: pesbuk
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - name: pesbuk-service
     protocol: TCP
