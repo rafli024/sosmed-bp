@@ -12,10 +12,10 @@ spec:
     - host: rafli24.my.id
       http:
         paths:
-          - path: /sosmed(.*)
+          - path: /sosmed
             pathType: Prefix
             backend:
               service:
                 name: pesbuk-service
                 port:
-                  number: 8080
+                  number: 80

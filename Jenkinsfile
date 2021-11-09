@@ -8,7 +8,7 @@ pipeline {
                 then
                     cd sosmed-bp && git pull
                 else 
-                    git clone ${repoURL}
+                    git clone https://github.com/rafli024/sosmed-bp.git
                 fi
                 '''
             }
