@@ -5,7 +5,7 @@ metadata:
 data:
   config.php: |
     <?php
-    $db_host = "db-stagging.cp9p94zrg0us.ap-southeast-1.rds.amazonaws.com";
+    $db_host = "dbsosmed.cp9p94zrg0us.ap-southeast-1.rds.amazonaws.com";
     $db_user = "devopscilsy";
     $db_pass = "1234567890";
     $db_name = "sosmed";
