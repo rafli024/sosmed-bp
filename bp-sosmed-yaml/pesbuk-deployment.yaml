@@ -20,7 +20,7 @@ spec:
           name: configmap-pesbuk #nama deployment configmap
       containers:
       - name: pesbuk
-        image: muhammadrafli24/sosmed:latest
+        image: muhammadrafli24/sosmed:${BUILD_NUMBER}
         ports:
           - containerPort: 8081
         volumeMounts:
@@ -35,7 +35,6 @@ metadata:
 spec:
   selector:
     app: pesbuk
-  type: ClusterIP
   ports:
   - name: pesbuk-service
     protocol: TCP
