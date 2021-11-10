@@ -47,7 +47,7 @@ pipeline {
             steps{
                 sh'''        
                     kubectl apply -f sosmed-bp/bp-sosmed-yaml                
-                    kubectl set image deployment/pesbuk pesbuk=muhammadrafli24/sosmed:${BUILD_NUMBER}
+                    kubectl set image deployment/pesbuk sosmed=muhammadrafli24/sosmed:${BUILD_NUMBER}
                     kubectl describe deployments/pesbuk
                     kubectl get pods -A
                 '''
